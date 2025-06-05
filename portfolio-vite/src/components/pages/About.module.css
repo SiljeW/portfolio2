@@ -1,0 +1,280 @@
+/* About Page */
+.aboutPage {
+  min-height: 100vh;
+  background: #f8f8f8;
+  color: #333;
+  padding-top: 70px; /* Account for fixed header */
+}
+
+/* Hero Section */
+.hero {
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  position: relative;
+}
+
+.heroContent {
+  text-align: center;
+}
+
+.title {
+  font-size: 4rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  margin: 0;
+  margin-bottom: 1rem;
+  color: #333;
+  text-transform: uppercase;
+  font-family: 'Bodoni Moda', 'Playfair Display', 'Didot', 'Times New Roman', serif;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  color: rgba(0, 0, 0, 0.6);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Content Section */
+.content {
+  padding: 5rem 0;
+  background: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 5rem;
+  margin-bottom: 5rem;
+}
+
+/* About Text */
+.aboutText h2 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  color: #333;
+  font-family: 'Bodoni Moda', 'Playfair Display', 'Didot', 'Times New Roman', serif;
+}
+
+.aboutText p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 1.5rem;
+}
+
+/* Skills */
+.skills h3 {
+  font-size: 1.8rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  color: #333;
+  font-family: 'Bodoni Moda', 'Playfair Display', 'Didot', 'Times New Roman', serif;
+}
+
+.skillsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.skillCategory h4 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.skillCategory ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skillCategory li {
+  padding: 0.4rem 0;
+  color: rgba(0, 0, 0, 0.7);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+}
+
+.skillCategory li:last-child {
+  border-bottom: none;
+}
+
+/* Experience */
+.experience {
+  margin-bottom: 5rem;
+}
+
+.experience h3 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 3rem;
+  color: #333;
+  font-family: 'Bodoni Moda', 'Playfair Display', 'Didot', 'Times New Roman', serif;
+  text-align: center;
+}
+
+.experienceGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.experienceItem {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.experienceItem:last-child {
+  border-bottom: none;
+}
+
+.year {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.role h4 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: 0 0 0.5rem 0;
+  color: #333;
+}
+
+.role p:first-of-type {
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0 0 1rem 0;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.role p:last-of-type {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+}
+
+/* Call to Action */
+.cta {
+  text-align: center;
+  padding: 3rem 0;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 8px;
+}
+
+.cta h3 {
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  color: #333;
+  font-family: 'Bodoni Moda', 'Playfair Display', 'Didot', 'Times New Roman', serif;
+}
+
+.cta p {
+  font-size: 1.1rem;
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 2rem;
+}
+
+.ctaButton {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  border: 2px solid #333;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.ctaButton:hover {
+  background: #333;
+  color: white;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .aboutText h2 {
+    font-size: 2rem;
+  }
+
+  .skills h3,
+  .experience h3,
+  .cta h3 {
+    font-size: 1.8rem;
+  }
+
+  .experienceItem {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .year {
+    order: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .aboutText h2 {
+    font-size: 1.5rem;
+  }
+
+  .skills h3,
+  .experience h3,
+  .cta h3 {
+    font-size: 1.5rem;
+  }
+
+  .ctaButton {
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+  }
+}

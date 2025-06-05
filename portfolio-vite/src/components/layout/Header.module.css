@@ -1,0 +1,438 @@
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: transparent;
+  padding: 2rem 0;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 100vh;
+  position: relative;
+}
+
+/* Social Links - Left side */
+.socialLinks {
+  position: fixed;
+  left: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.socialLink {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.socialLink:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+/* Navigation - Top right */
+.nav {
+  position: fixed;
+  top: 3rem;
+  right: 3rem;
+  display: flex;
+  gap: 3rem;
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+  font-weight: 300;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+}
+
+.navLink:hover {
+  opacity: 0.7;
+}
+
+/* Main Title - Center */
+.mainTitle {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 100%;
+}
+
+.title {
+  margin: 0;
+  line-height: 0.9;
+  position: relative;
+}
+
+.firstName {
+  display: block;
+  font-size: 4.5rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Bodoni Moda', 'Playfair Display', 'Didot', 'Times New Roman', serif;
+  text-align: left;
+  margin-left: -10%;
+}
+
+.lastName {
+  display: block;
+  font-size: 4.5rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Bodoni Moda', 'Playfair Display', 'Didot', 'Times New Roman', serif;
+  text-align: left;
+  margin-top: -0.2rem;
+  margin-right: -20%;
+}
+
+.subtitle {
+  display: block;
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  margin-top: 1.5rem;
+  font-family: sans-serif;
+  text-align: center;
+  margin-left: 20%;
+}
+
+/* Project Numbers - Right side */
+.projectNumbers {
+  position: fixed;
+  right: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.projectNumber {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.projectNumber:hover {
+  transform: translateX(-10px);
+}
+
+.number {
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  font-family: 'Georgia', serif;
+}
+
+.projectLabel {
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  text-align: right;
+}
+
+.projectNumber:hover .projectLabel {
+  font-size: 0.7rem;
+}
+
+/* Project Preview Cards - Smaller and Centered */
+.projectCard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  width: 450px;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 12px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 5;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.project1Card {
+  background-image: url('../../assets/project1.png');
+}
+
+.project2Card {
+  background-image: url('../../assets/project2.png');
+}
+
+.project3Card {
+  background-image: url('../../assets/project3.png');
+}
+
+.projectCard.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.cardContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: 2rem;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.4s ease 0.2s;
+}
+
+.projectCard.active .cardContent {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.cardNumber {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 0.5rem;
+  display: block;
+  letter-spacing: 0.1em;
+}
+
+.cardTitle {
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin: 0 0 0.5rem 0;
+  font-family: 'Bodoni Moda', 'Playfair Display', 'Didot', 'Times New Roman', serif;
+}
+
+.cardDescription {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  font-weight: 300;
+}
+
+/* Background fade transition */
+#main-background {
+  transition: opacity 0.8s ease, filter 0.8s ease !important;
+}
+
+/* Home button styling */
+.homeLink {
+  color: white;
+  text-decoration: none;
+  font-weight: 300;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+  margin-right: 1rem;
+}
+
+.homeLink:hover {
+  opacity: 0.7;
+}
+
+/* Enhanced hover effects for project numbers */
+.projectNumber {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-decoration: none;
+  color: white;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+}
+
+.projectNumber:hover {
+  transform: translateX(-15px) scale(1.1);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.projectNumber:hover .number {
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.projectNumber:hover .projectLabel {
+  color: rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+}
+
+/* Additional overlay effect */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.container.project1Hover::before,
+.container.project2Hover::before,
+.container.project3Hover::before {
+  opacity: 1;
+}
+
+/* Smooth transition for text elements when hovering */
+.mainTitle {
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+  position: relative;
+}
+
+.container.project1Hover .mainTitle,
+.container.project2Hover .mainTitle,
+.container.project3Hover .mainTitle {
+  transform: translate(-50%, -50%) scale(0.95);
+  opacity: 0.7;
+}
+
+.socialLinks,
+.nav {
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+  position: relative;
+}
+
+.container.project1Hover .socialLinks,
+.container.project2Hover .socialLinks,
+.container.project3Hover .socialLinks,
+.container.project1Hover .nav,
+.container.project2Hover .nav,
+.container.project3Hover .nav {
+  opacity: 0.6;
+  transform: scale(0.95);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  .mainTitle .firstName,
+  .mainTitle .lastName {
+    font-size: 3rem;
+  }
+  
+  .mainTitle .subtitle {
+    font-size: 0.8rem;
+    margin-top: 1rem;
+  }
+  
+  .socialLinks {
+    left: 1.5rem;
+    gap: 0.8rem;
+  }
+  
+  .socialLink {
+    width: 35px;
+    height: 35px;
+    font-size: 0.7rem;
+  }
+  
+  .nav {
+    top: 2rem;
+    right: 1.5rem;
+    gap: 2rem;
+  }
+  
+  .navLink {
+    font-size: 0.9rem;
+  }
+  
+  .projectNumbers {
+    right: 1.5rem;
+    gap: 2rem;
+  }
+  
+  .number {
+    font-size: 1.5rem;
+  }
+  
+  .projectLabel {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainTitle .firstName,
+  .mainTitle .lastName {
+    font-size: 2.2rem;
+  }
+  
+  .mainTitle .subtitle {
+    font-size: 0.7rem;
+  }
+  
+  .projectNumbers {
+    display: none;
+  }
+  
+  .nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .socialLinks {
+    flex-direction: row;
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    top: auto;
+  }
+}
