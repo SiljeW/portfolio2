@@ -4,6 +4,8 @@
   background: #f8f8f8;
   color: #333;
   padding-top: 70px; /* Account for fixed header */
+  position: relative;
+  z-index: 1;
 }
 
 /* Hero Section */
@@ -14,6 +16,7 @@
   justify-content: center;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   position: relative;
+  z-index: 2;
 }
 
 .heroContent {
@@ -59,12 +62,16 @@
 .projectDetails {
   padding: 5rem 0;
   background: white;
+  position: relative;
+  z-index: 2;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 3rem;
+  position: relative;
+  z-index: 3;
 }
 
 .detailsGrid {
@@ -72,6 +79,8 @@
   grid-template-columns: 1.5fr 1fr;
   gap: 5rem;
   align-items: start;
+  position: relative;
+  z-index: 4;
 }
 
 /* Image Section */
@@ -90,7 +99,7 @@
 .projectImage img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 0.3s ease;
 }
 
@@ -101,6 +110,8 @@
 /* Info Section */
 .infoSection {
   padding-top: 2rem;
+  position: relative;
+  z-index: 5;
 }
 
 .description h2 {
@@ -143,12 +154,16 @@
   font-weight: 500;
 }
 
+/* Fixed Project Links */
 .projectLinks {
   display: flex;
   gap: 1.5rem;
+  position: relative;
+  z-index: 10;
 }
 
 .projectLink {
+  display: inline-block;
   padding: 1rem 2rem;
   border: 2px solid #333;
   color: #333;
@@ -158,18 +173,30 @@
   letter-spacing: 0.1em;
   transition: all 0.3s ease;
   background: transparent;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
+  user-select: none;
 }
 
 .projectLink:hover {
   background: #333;
   color: white;
+  transform: translateY(-2px);
 }
 
-/* Project Navigation */
+.projectLink:active {
+  transform: translateY(0);
+}
+
+/* Project Navigation - Fixed */
 .projectNav {
   padding: 5rem 0;
   background: #f8f8f8;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
 }
 
 .navGrid {
@@ -188,6 +215,10 @@
   border: 1px solid rgba(0, 0, 0, 0.1);
   background: white;
   transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
 }
 
 .otherProject:hover {
@@ -201,6 +232,7 @@
   color: rgba(0, 0, 0, 0.3);
   margin-bottom: 1rem;
   font-family: 'Bodoni Moda', 'Playfair Display', 'Didot', 'Times New Roman', serif;
+  pointer-events: none; /* Prevent text selection, allow click through to parent */
 }
 
 .otherTitle {
@@ -209,6 +241,7 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   text-align: center;
+  pointer-events: none; /* Prevent text selection, allow click through to parent */
 }
 
 /* Footer */
@@ -224,6 +257,19 @@
   align-items: center;
   font-size: 0.9rem;
   opacity: 0.8;
+}
+
+/* Ensure no pseudo-elements block clicks */
+.projectPage *::before,
+.projectPage *::after {
+  pointer-events: none;
+}
+
+/* Override any potential blocking styles */
+.projectLinks a,
+.navGrid a {
+  pointer-events: auto !important;
+  cursor: pointer !important;
 }
 
 /* Mobile Responsive */

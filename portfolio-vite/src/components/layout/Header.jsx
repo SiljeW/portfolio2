@@ -28,10 +28,39 @@ const Header = () => {
     setHoveredProject(null);
   };
 
+  // Project data with live website URLs
+  const projects = [
+    {
+      id: 1,
+      number: '01',
+      title: 'Petsome',
+      description: 'Pet adoption platform',
+      liveUrl: 'https://siljewpetsome.netlify.app/',
+      route: '/project1'
+    },
+    {
+      id: 2,
+      number: '02',
+      title: 'Bunchies',
+      description: 'Webshop for all sorts of things',
+      liveUrl: 'https://your-bunchies-url.com', // Replace with actual URL
+      route: '/project2'
+    },
+    {
+      id: 3,
+      number: '03',
+      title: 'Holidaze',
+      description: 'Holiday venues for booking',
+      liveUrl: 'https://your-holidaze-url.com', // Replace with actual URL
+      route: '/project3'
+    }
+  ];
+
   return (
     <header className={styles.header}>
-      <div className={`${styles.container} ${hoveredProject ? styles[`project${hoveredProject}Hover`] : ''}`}>
-        {/* Left side - Social links */}
+      {/* IMPORTANT: Add 'homepage' class when on home page */}
+      <div className={`${styles.container} ${isHomePage ? styles.homepage : ''} ${hoveredProject ? styles[`project${hoveredProject}Hover`] : ''}`}>
+        {/* Left side - Social links (only show on homepage) */}
         <div className={styles.socialLinks}>
           <a href="#" className={styles.socialLink}>
             <span>IG</span>
@@ -70,60 +99,46 @@ const Header = () => {
         {/* Project numbers - positioned on the right (only show on homepage) */}
         {isHomePage && (
           <div className={styles.projectNumbers}>
-            <Link 
-              to="/project1" 
-              className={styles.projectNumber}
-              onMouseEnter={() => handleProjectHover(1)}
-              onMouseLeave={handleProjectLeave}
-            >
-              <span className={styles.number}>01</span>
-              <span className={styles.projectLabel}>Petsome</span>
-            </Link>
-            <Link 
-              to="/project2" 
-              className={styles.projectNumber}
-              onMouseEnter={() => handleProjectHover(2)}
-              onMouseLeave={handleProjectLeave}
-            >
-              <span className={styles.number}>02</span>
-              <span className={styles.projectLabel}>Bunchies</span>
-            </Link>
-            <Link 
-              to="/project3" 
-              className={styles.projectNumber}
-              onMouseEnter={() => handleProjectHover(3)}
-              onMouseLeave={handleProjectLeave}
-            >
-              <span className={styles.number}>03</span>
-              <span className={styles.projectLabel}>Holidaze</span>
-            </Link>
+            {projects.map((project) => (
+              <Link 
+                key={project.id}
+                to={project.route} 
+                className={styles.projectNumber}
+                onMouseEnter={() => handleProjectHover(project.id)}
+                onMouseLeave={handleProjectLeave}
+              >
+                <span className={styles.number}>{project.number}</span>
+                <span className={styles.projectLabel}>{project.title}</span>
+              </Link>
+            ))}
           </div>
         )}
 
-        {/* Project Preview Cards - Smaller and Centered */}
+        {/* Project Preview Cards with Live Website Previews (only show on homepage) */}
         {isHomePage && (
           <>
-            <div className={`${styles.projectCard} ${styles.project1Card} ${hoveredProject === 1 ? styles.active : ''}`}>
-              <div className={styles.cardContent}>
-                <span className={styles.cardNumber}>01</span>
-                <h3 className={styles.cardTitle}>Petsome</h3>
-                <p className={styles.cardDescription}>Pet adoption platform</p>
-              </div>
-            </div>
-            <div className={`${styles.projectCard} ${styles.project2Card} ${hoveredProject === 2 ? styles.active : ''}`}>
-              <div className={styles.cardContent}>
-                <span className={styles.cardNumber}>02</span>
-                <h3 className={styles.cardTitle}>Bunchies</h3>
-                <p className={styles.cardDescription}>Webshop for all sorts of things</p>
-              </div>
-            </div>
-            <div className={`${styles.projectCard} ${styles.project3Card} ${hoveredProject === 3 ? styles.active : ''}`}>
-              <div className={styles.cardContent}>
-                <span className={styles.cardNumber}>03</span>
-                <h3 className={styles.cardTitle}>Holidaze</h3>
-                <p className={styles.cardDescription}>Holiday venues for booking</p>
-              </div>
-            </div>
+            {projects.map((project) => (
+              <Link 
+                key={project.id}
+                to={project.route}
+                className={`${styles.projectCard} ${styles[`project${project.id}Card`]} ${hoveredProject === project.id ? styles.active : ''}`}
+              >
+                <div className={styles.cardPreview}>
+                  <iframe
+                    src={project.liveUrl}
+                    className={styles.websitePreview}
+                    title={`${project.title} preview`}
+                    loading="lazy"
+                    sandbox="allow-same-origin allow-scripts"
+                  />
+                </div>
+                <div className={styles.cardContent}>
+                  <span className={styles.cardNumber}>{project.number}</span>
+                  <h3 className={styles.cardTitle}>{project.title}</h3>
+                  <p className={styles.cardDescription}>{project.description}</p>
+                </div>
+              </Link>
+            ))}
           </>
         )}
       </div>

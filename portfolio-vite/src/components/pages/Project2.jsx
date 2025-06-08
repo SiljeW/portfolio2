@@ -9,9 +9,9 @@ const Project2 = () => {
       projectSubtitle="React Application"
       projectDescription="A webshop containing all sorts of things, with a functional shopping cart and checkout page"
       technologies={["React", "Styled Components", "HTML"]}
-      projectImage="/images/project2.jpg" // Update with your actual image path
+      projectImage="/bunchies2.png"
       liveLink="https://bunchiesjsfw.netlify.app/"
-      githubLink="https://github.com/your-username/project2"
+      githubLink="https://github.com/SiljeW/jsfw"
     />
   );
 };

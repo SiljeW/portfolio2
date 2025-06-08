@@ -12,6 +12,15 @@ const ProjectPage = ({
   liveLink = "#",
   githubLink = "#"
 }) => {
+  
+  // Debug function to test clicks
+  const handleLinkClick = (linkType, url) => {
+    console.log(`${linkType} clicked:`, url);
+    if (url !== "#") {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+  };
+
   return (
     <div className={styles.projectPage}>
       {/* Project Hero */}
@@ -51,11 +60,43 @@ const ProjectPage = ({
                 </div>
               </div>
 
+              {/* Updated project links with better click handling */}
               <div className={styles.projectLinks}>
-                <a href={liveLink} className={styles.projectLink} target="_blank" rel="noopener noreferrer">
+                <a 
+                  href={liveLink} 
+                  className={`${styles.projectLink} ${styles.liveLink}`}
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    console.log('Live link clicked:', liveLink);
+                    // Don't prevent default, let the link work normally
+                  }}
+                  style={{
+                    // Debug styles to ensure visibility and clickability
+                    position: 'relative',
+                    zIndex: 10,
+                    pointerEvents: 'auto',
+                    cursor: 'pointer'
+                  }}
+                >
                   View Live
                 </a>
-                <a href={githubLink} className={styles.projectLink} target="_blank" rel="noopener noreferrer">
+                <a 
+                  href={githubLink} 
+                  className={`${styles.projectLink} ${styles.codeLink}`}
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    console.log('Code link clicked:', githubLink);
+                  }}
+                  style={{
+                    // Debug styles to ensure visibility and clickability
+                    position: 'relative',
+                    zIndex: 10,
+                    pointerEvents: 'auto',
+                    cursor: 'pointer'
+                  }}
+                >
                   View Code
                 </a>
               </div>
@@ -69,15 +110,54 @@ const ProjectPage = ({
       <section className={styles.projectNav}>
         <div className={styles.container}>
           <div className={styles.navGrid}>
-            <Link to="/project1" className={styles.otherProject}>
+            <Link 
+              to="/project1" 
+              className={styles.otherProject}
+              onClick={(e) => {
+                console.log('Project 1 navigation clicked');
+              }}
+              style={{
+                // Debug styles
+                position: 'relative',
+                zIndex: 10,
+                pointerEvents: 'auto',
+                cursor: 'pointer'
+              }}
+            >
               <span className={styles.otherNumber}>01</span>
               <span className={styles.otherTitle}>Petsome</span>
             </Link>
-            <Link to="/project2" className={styles.otherProject}>
+            <Link 
+              to="/project2" 
+              className={styles.otherProject}
+              onClick={(e) => {
+                console.log('Project 2 navigation clicked');
+              }}
+              style={{
+                // Debug styles
+                position: 'relative',
+                zIndex: 10,
+                pointerEvents: 'auto',
+                cursor: 'pointer'
+              }}
+            >
               <span className={styles.otherNumber}>02</span>
               <span className={styles.otherTitle}>Bunchies</span>
             </Link>
-            <Link to="/project3" className={styles.otherProject}>
+            <Link 
+              to="/project3" 
+              className={styles.otherProject}
+              onClick={(e) => {
+                console.log('Project 3 navigation clicked');
+              }}
+              style={{
+                // Debug styles
+                position: 'relative',
+                zIndex: 10,
+                pointerEvents: 'auto',
+                cursor: 'pointer'
+              }}
+            >
               <span className={styles.otherNumber}>03</span>
               <span className={styles.otherTitle}>Holidaze</span>
             </Link>

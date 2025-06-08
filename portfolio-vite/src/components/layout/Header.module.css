@@ -16,8 +16,14 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  height: 100vh;
+  height: auto;
+  min-height: 80px;
   position: relative;
+}
+
+/* Only apply full height container on homepage */
+.container.homepage {
+  height: 100vh;
 }
 
 /* Social Links - Left side */
@@ -29,6 +35,16 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  /* Hide on non-homepage to avoid blocking content */
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* Show social links only on homepage */
+.container.homepage .socialLinks {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .socialLink {
@@ -61,6 +77,7 @@
   right: 3rem;
   display: flex;
   gap: 3rem;
+  z-index: 1001; /* Higher than header */
 }
 
 .navLink {
@@ -77,7 +94,23 @@
   opacity: 0.7;
 }
 
-/* Main Title - Center */
+/* Home button styling */
+.homeLink {
+  color: white;
+  text-decoration: none;
+  font-weight: 300;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+  margin-right: 1rem;
+}
+
+.homeLink:hover {
+  opacity: 0.7;
+}
+
+/* Main Title - Center (only on homepage) */
 .mainTitle {
   position: absolute;
   top: 30%;
@@ -85,6 +118,16 @@
   transform: translate(-50%, -50%);
   z-index: 10;
   width: 100%;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Hide by default */
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Show main title only on homepage */
+.container.homepage .mainTitle {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .title {
@@ -101,7 +144,7 @@
   color: white;
   text-transform: uppercase;
   font-family: 'Bodoni Moda', 'Playfair Display', 'Didot', 'Times New Roman', serif;
-  text-align: left;
+  text-align: center;
   margin-left: -10%;
 }
 
@@ -113,7 +156,7 @@
   color: white;
   text-transform: uppercase;
   font-family: 'Bodoni Moda', 'Playfair Display', 'Didot', 'Times New Roman', serif;
-  text-align: left;
+  text-align: center;
   margin-top: -0.2rem;
   margin-right: -20%;
 }
@@ -131,7 +174,7 @@
   margin-left: 20%;
 }
 
-/* Project Numbers - Right side */
+/* Project Numbers - Right side (only on homepage) */
 .projectNumbers {
   position: fixed;
   right: 3rem;
@@ -140,6 +183,16 @@
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  /* Hide by default */
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* Show project numbers only on homepage */
+.container.homepage .projectNumbers {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .projectNumber {
@@ -148,12 +201,26 @@
   align-items: flex-end;
   text-decoration: none;
   color: white;
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  position: relative;
+  z-index: 10;
 }
 
 .projectNumber:hover {
-  transform: translateX(-10px);
+  transform: translateX(-15px) scale(1.1);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.projectNumber:hover .number {
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.projectNumber:hover .projectLabel {
+  color: rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+  font-size: 0.7rem;
 }
 
 .number {
@@ -173,21 +240,14 @@
   text-align: right;
 }
 
-.projectNumber:hover .projectLabel {
-  font-size: 0.7rem;
-}
-
-/* Project Preview Cards - Smaller and Centered */
+/* Project Preview Cards - Updated for live preview (only on homepage) */
 .projectCard {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.8);
   width: 450px;
-  height: 250px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  height: 280px;
   border-radius: 12px;
   opacity: 0;
   visibility: hidden;
@@ -195,18 +255,19 @@
   z-index: 5;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  /* Hide by default */
+  pointer-events: none;
 }
 
-.project1Card {
-  background-image: url('../../assets/project1.png');
-}
-
-.project2Card {
-  background-image: url('../../assets/project2.png');
-}
-
-.project3Card {
-  background-image: url('../../assets/project3.png');
+/* Show project cards only on homepage */
+.container.homepage .projectCard {
+  pointer-events: auto;
 }
 
 .projectCard.active {
@@ -215,6 +276,54 @@
   transform: translate(-50%, -50%) scale(1);
 }
 
+.projectCard:hover {
+  transform: translate(-50%, -50%) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* Live website preview container */
+.cardPreview {
+  width: 100%;
+  height: 70%;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+  position: relative;
+  background: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.websitePreview {
+  width: 333.33%;
+  height: 333.33%;
+  border: none;
+  transform: scale(0.3);
+  transform-origin: 0 0;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+  background: white;
+}
+
+.projectCard:hover .websitePreview {
+  transform: scale(0.32);
+}
+
+/* Loading state for preview */
+.cardPreview::before {
+  content: 'Loading preview...';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  z-index: 1;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+/* Card content area */
 .cardContent {
   position: absolute;
   bottom: 0;
@@ -222,10 +331,14 @@
   right: 0;
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
   color: white;
-  padding: 2rem;
+  padding: 1.5rem 2rem;
   transform: translateY(20px);
   opacity: 0;
   transition: all 0.4s ease 0.2s;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .projectCard.active .cardContent {
@@ -261,50 +374,6 @@
   transition: opacity 0.8s ease, filter 0.8s ease !important;
 }
 
-/* Home button styling */
-.homeLink {
-  color: white;
-  text-decoration: none;
-  font-weight: 300;
-  font-size: 1rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  transition: opacity 0.3s ease;
-  margin-right: 1rem;
-}
-
-.homeLink:hover {
-  opacity: 0.7;
-}
-
-/* Enhanced hover effects for project numbers */
-.projectNumber {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  text-decoration: none;
-  color: white;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  position: relative;
-  z-index: 10;
-}
-
-.projectNumber:hover {
-  transform: translateX(-15px) scale(1.1);
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.projectNumber:hover .number {
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-}
-
-.projectNumber:hover .projectLabel {
-  color: rgba(255, 255, 255, 0.8);
-  transform: translateY(-2px);
-}
-
 /* Additional overlay effect */
 .container::before {
   content: '';
@@ -327,12 +396,6 @@
 }
 
 /* Smooth transition for text elements when hovering */
-.mainTitle {
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 10;
-  position: relative;
-}
-
 .container.project1Hover .mainTitle,
 .container.project2Hover .mainTitle,
 .container.project3Hover .mainTitle {
@@ -406,6 +469,11 @@
   .projectLabel {
     font-size: 0.7rem;
   }
+  
+  .projectCard {
+    width: 350px;
+    height: 220px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -419,6 +487,10 @@
   }
   
   .projectNumbers {
+    display: none;
+  }
+  
+  .projectCard {
     display: none;
   }
   

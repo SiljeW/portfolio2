@@ -9,9 +9,9 @@ const Project3 = () => {
       projectSubtitle="React application"
       projectDescription="A responsive web application for hosting venues that are bookable by user. Contains admin and user authentication"
       technologies={["React", "REST API", "HTML&CSS", "Figma"]}
-      projectImage="/images/project3.jpg" // Update with your actual image path
+      projectImage="/holidaze2.png" // Update with your actual image path
       liveLink="https://swholidaze.netlify.app/"
-      githubLink="https://github.com/your-username/project3"
+      githubLink="https://github.com/SiljeW/silje-pe2"
     />
   );
 };
