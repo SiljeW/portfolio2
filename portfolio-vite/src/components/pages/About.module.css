@@ -4,6 +4,8 @@
   background: #f8f8f8;
   color: #333;
   padding-top: 70px; /* Account for fixed header */
+  position: relative;
+  z-index: 1;
 }
 
 /* Hero Section */
