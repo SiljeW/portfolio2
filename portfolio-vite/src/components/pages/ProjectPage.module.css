@@ -154,6 +154,40 @@
   font-weight: 500;
 }
 
+.improvements {
+  margin-bottom: 3rem;
+}
+
+.improvements h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.improvements p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* If using separate section */
+.improvementsSection {
+  padding: 4rem 0;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.improvementsSection h3 {
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  color: #333;
+  font-family: 'Bodoni Moda', 'Playfair Display', 'Didot', 'Times New Roman', serif;
+  text-align: center;
+}
+
 /* Fixed Project Links */
 .projectLinks {
   display: flex;

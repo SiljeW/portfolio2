@@ -13,6 +13,7 @@ const Project3 = () => {
       projectImage="/holidaze2.png" // Update with your actual image path
       liveLink="https://swholidaze.netlify.app/"
       githubLink="https://github.com/SiljeW/silje-pe2/blob/main/pe-app/README.md"
+      improvements="Looking back at this project, there are several key areas I would focus on for improvement. A major priority would be bringing all component styles into alignment with the established style guide. Currently, there are inconsistencies in color usage, button styles, and layout patterns throughout the application that detract from the overall user experience. Standardizing these elements would create a more polished and cohesive brand presence."
     />
   );
 };

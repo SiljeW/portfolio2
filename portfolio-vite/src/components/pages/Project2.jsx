@@ -13,6 +13,7 @@ const Project2 = () => {
       projectImage="/bunchies2.png"
       liveLink="https://bunchiesjsfw.netlify.app/"
       githubLink="https://github.com/SiljeW/jsfw/blob/main/my-app/README.md"
+      improvements="Future improvements for this project would focus on redesigning the user interface with a more contemporary aesthetic, improved accessibility features, and better mobile responsiveness. The checkout system requires a complete overhaul to include secure payment processing, order confirmation emails, inventory management integration, and comprehensive error handling. Implementation should follow test-driven development practices with automated testing for all critical user paths."
     />
   );
 };

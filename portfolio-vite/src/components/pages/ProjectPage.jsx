@@ -10,7 +10,8 @@ const ProjectPage = ({
   technologies = ["React", "CSS", "JavaScript"],
   projectImage = "/path/to/image.jpg",
   liveLink = "#",
-  githubLink = "#"
+  githubLink = "#",
+  improvements
 }) => {
   
   // Debug function to test clicks
@@ -59,6 +60,13 @@ const ProjectPage = ({
                   ))}
                 </div>
               </div>
+
+              {improvements && (
+                <div className={styles.improvements}>
+                  <h3>Future Improvements</h3>
+                  <p>{improvements}</p>
+                </div>
+              )}
 
               {/* Updated project links with better click handling */}
               <div className={styles.projectLinks}>
