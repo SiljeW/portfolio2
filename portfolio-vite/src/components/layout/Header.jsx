@@ -28,13 +28,14 @@ const Header = () => {
     setHoveredProject(null);
   };
 
-  // Project data with live website URLs
+  // Project data with preview images
   const projects = [
     {
       id: 1,
       number: '01',
       title: 'Petsome',
-      description: 'Pet adoption platform',
+      description: 'Pet adoption platform with authenticated register and login function, search and filter parameters..',
+      previewImage: '/petsomepreview.png', // Add your image path
       liveUrl: 'https://siljewpetsome.netlify.app/',
       route: '/project1'
     },
@@ -42,23 +43,25 @@ const Header = () => {
       id: 2,
       number: '02',
       title: 'Bunchies',
-      description: 'Webshop for all sorts of things',
-      liveUrl: 'https://your-bunchies-url.com', // Replace with actual URL
+      description: 'Webshop for all sorts of things. Built with React and styled modules, fetched objects from Noroff API..',
+      previewImage: '/bunchiespreview.png', // Add your image path
+      liveUrl: 'https://bunchiesjsfw.netlify.app/',
       route: '/project2'
     },
     {
       id: 3,
       number: '03',
       title: 'Holidaze',
-      description: 'Holiday venues for booking',
-      liveUrl: 'https://your-holidaze-url.com', // Replace with actual URL
+      description: 'Holiday venues for booking built with React. Contains admin and user authentication, as well as admin dashboard for venue managing..',
+      previewImage: '/holidazepreview.png', // Add your image path
+      liveUrl: 'https://swholidaze.netlify.app/',
       route: '/project3'
     }
   ];
 
   return (
     <header className={styles.header}>
-      {/* IMPORTANT: Add 'homepage' class when on home page */}
+      {/* Add 'homepage' class when on home page */}
       <div className={`${styles.container} ${isHomePage ? styles.homepage : ''} ${hoveredProject ? styles[`project${hoveredProject}Hover`] : ''}`}>
         {/* Left side - Social links (only show on homepage) */}
         <div className={styles.socialLinks}>
@@ -114,7 +117,7 @@ const Header = () => {
           </div>
         )}
 
-        {/* Project Preview Cards with Live Website Previews (only show on homepage) */}
+        {/* Project Preview Cards with Image Previews (only show on homepage) */}
         {isHomePage && (
           <>
             {projects.map((project) => (
@@ -124,12 +127,10 @@ const Header = () => {
                 className={`${styles.projectCard} ${styles[`project${project.id}Card`]} ${hoveredProject === project.id ? styles.active : ''}`}
               >
                 <div className={styles.cardPreview}>
-                  <iframe
-                    src={project.liveUrl}
-                    className={styles.websitePreview}
-                    title={`${project.title} preview`}
-                    loading="lazy"
-                    sandbox="allow-same-origin allow-scripts"
+                  <img
+                    src={project.previewImage}
+                    alt={`${project.title} preview`}
+                    className={styles.previewImage}
                   />
                 </div>
                 <div className={styles.cardContent}>
